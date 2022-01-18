@@ -24,7 +24,7 @@ const Home = () => {
 
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
-                        <ProductList title={item.title} price={item.price} source={item.image} />
+                        <ProductList title={item.title} price={item.price} source={item.image} id={item.id} />
                     )}
                 />
 

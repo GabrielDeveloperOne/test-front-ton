@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as S from './styles'
 import { ImageSourcePropType } from 'react-native'
-import { Text, Card, Image, Button } from 'react-native-elements'
+import { CartContext } from '@contexts/CartContext'
+import { Card, Button } from 'react-native-elements'
+import { Types } from '@contexts/CartReducer'
 
 type ProductListProps = {
-    title?: string
-    price?: number
+    title: string
+    price: number
     image?: string
+    id: number
     source: ImageSourcePropType
 }
 
-const ProductList = ({ title, source, price }: ProductListProps) => {
+const ProductList = ({ title, source, price, id }: ProductListProps) => {
+
+    const { dispatch } = useContext(CartContext)
+
+    const createProduct = () => {
+        dispatch({
+            type: Types.Create,
+            payload: {
+                id: id,
+                name: title,
+                price: price
+            }
+        });
+    };
 
     return (
         <Card>
@@ -24,6 +40,7 @@ const ProductList = ({ title, source, price }: ProductListProps) => {
                 R$: {price}
             </S.NumberPrice>
             <Button
+                onPress={() => createProduct()}
                 title="Adicionar"
             />
 

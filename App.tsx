@@ -15,6 +15,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { CartProvider } from '@contexts/CartContext'
 import { ThemeProvider } from '@contexts/Theme'
 import Header from '@components/Header'
 import Home from '@pages/Home'
@@ -30,20 +31,22 @@ const App: () => Node = () => {
     <NavigationContainer>
       <ThemeProvider>
         <SafeAreaProvider>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <Header />
-          <Stack.Navigator initialRouteName="Home">
+          <CartProvider>
+            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+            <Header />
+            <Stack.Navigator initialRouteName="Home">
 
-            <Stack.Screen name="Home" component={Home} options={{
-              headerShown: false
-            }} />
-            <Stack.Screen name="Cart" component={Cart} options={{
-              headerShown: false
-            }} />
-            <Stack.Screen name="Header" component={Header} options={{
-              headerShown: false
-            }} />
-          </Stack.Navigator>
+              <Stack.Screen name="Home" component={Home} options={{
+                headerShown: false
+              }} />
+              <Stack.Screen name="Cart" component={Cart} options={{
+                headerShown: false
+              }} />
+              <Stack.Screen name="Header" component={Header} options={{
+                headerShown: false
+              }} />
+            </Stack.Navigator>
+          </CartProvider>
         </SafeAreaProvider>
       </ThemeProvider>
     </NavigationContainer>
