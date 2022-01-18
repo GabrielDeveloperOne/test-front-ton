@@ -17,7 +17,7 @@
       "@hooks/*": ["./src/hooks/*"],
       "@pages/*": ["./src/pages/*"],
       "@utils/*": ["./src/utils/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@types/*": ["./src/types/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

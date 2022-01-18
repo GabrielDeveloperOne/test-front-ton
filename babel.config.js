@@ -15,9 +15,9 @@ module.exports = {
         alias: {
           '@components': './src/components',
           '@contexts': './src/contexts',
-          '@hook': './src/hook',
+          '@hooks': './src/hooks',
           '@pages': './src/pages',
-          '@routes': './src/routes',
+          '@types': './src/types',
           '@utils': './src/utils',
         },
       },

@@ -8,25 +8,23 @@
 
 import React from 'react'
 import type { Node } from 'react'
+import {
+  StatusBar,
+  useColorScheme,
+} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ThemeProvider } from '@contexts/Theme'
 import Header from '@components/Header'
 import Home from '@pages/Home'
 import Cart from '@pages/Cart'
-import {
-  StatusBar,
+import { useRoute } from '@react-navigation/native'
 
-  useColorScheme,
-
-} from 'react-native'
-
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+const Stack = createNativeStackNavigator()
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark'
-
-  const Stack = createNativeStackNavigator()
 
   return (
     <NavigationContainer>
@@ -34,9 +32,17 @@ const App: () => Node = () => {
         <SafeAreaProvider>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <Header />
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Cart" component={Cart} />
+          <Stack.Navigator initialRouteName="Home">
+
+            <Stack.Screen name="Home" component={Home} options={{
+              headerShown: false
+            }} />
+            <Stack.Screen name="Cart" component={Cart} options={{
+              headerShown: false
+            }} />
+            <Stack.Screen name="Header" component={Header} options={{
+              headerShown: false
+            }} />
           </Stack.Navigator>
         </SafeAreaProvider>
       </ThemeProvider>

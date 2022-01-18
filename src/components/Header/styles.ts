@@ -5,7 +5,6 @@ export const HeaderContainer = styled(Header)`
     flex: 1;
     justify-content: center;
     lign-items: center;
-    flex-direction: row;
 `
 
 export const HeaderRight = styled.View`
